@@ -49,6 +49,23 @@ KEY_MAPPING = {
     "*": pygame.K_ASTERISK
 }
 
+SHIFT_CHARS = {
+    "\"",  # Shift + '
+    ":",   # Shift + ;
+    "_",   # Shift + -
+    "(",   # Shift + 9
+    ")",   # Shift + 0
+    "#",   # Shift + 3
+    "<",   # Shift + ,
+    ">",   # Shift + .
+    "!",   # Shift + 1
+    "$",   # Shift + 4
+    "?",   # Shift + /
+    "%",   # Shift + 5
+    "&",   # Shift + 7
+    "*",   # Shift + 8
+}
+
 # ======================================================
 # ======================== GAME ========================
 # ======================================================
@@ -64,9 +81,9 @@ class Game:
 
         # Spawn timing settings
         self.spawn_timer = 0
-        self.spawn_delay = 2000  # Time between spawns in milliseconds (2 seconds)
+        self.spawn_delay = 5000
         self.last_spawn_time = pygame.time.get_ticks()
-        self.max_enemies = 20  # Maximum number of enemies allowed at once
+        self.max_enemies = 20
         
         # Define row options based on difficulty
         self.row_options = {
@@ -77,6 +94,9 @@ class Game:
 
         # Generate row assignments for the player in the game (9 rows)
         self.row_assignments = self.generate_row_assignments()
+        
+        # Font for row indicators
+        self.font = None
 
     def init(self):
         pygame.init()
@@ -84,6 +104,9 @@ class Game:
         self.running = True
         self.fps = pygame.time.Clock()
         pygame.display.set_caption("My first game!")
+        
+        # Initialize font after pygame.init()
+        self.font = pygame.font.Font(None, 36)  # None uses default system font
 
     # ======================== Utility Functions ========================
     def handle_event(self, event):
@@ -117,6 +140,20 @@ class Game:
 
     def render(self):
         self.display_surf.fill(BG_COLOR)
+
+        # Draw row indicators before entities
+        for i, key in enumerate(self.row_assignments):
+            # Calculate row position
+            row_y = int((i + 0.5) * SPRITE_HEIGHT)
+            
+            # Create text surface
+            text_surface = self.font.render(key, True, WHITE)
+            
+            # Position text in center of row, between the bars
+            text_rect = text_surface.get_rect(center=(SCREEN_WIDTH // 2, row_y))
+            
+            # Draw text
+            self.display_surf.blit(text_surface, text_rect)
 
         self.player.draw(self.display_surf)
         for e in self.enemies:
@@ -234,8 +271,19 @@ class Enemy(pygame.sprite.Sprite):
         # Determine spawn position
         self.spawn_on_valid_row()
 
-        # Speed (negative for left-moving enemies)
-        self.speed = random.choice([-3, -2, -1, 1, 2, 3])
+        # Speed distribution based on probabilities:
+        # 90% chance for speed 1, 9% for speed 2, 1% for speed 3
+        speed_roll = random.random() * 100  # Roll between 0-100
+        if speed_roll < 90:
+            base_speed = 1
+        elif speed_roll < 99:
+            base_speed = 2
+        else:
+            base_speed = 3
+            
+        # Randomly choose direction (positive or negative)
+        self.speed = base_speed * random.choice([-1, 1])
+        
         # Adjust position based on speed direction
         if self.speed > 0:  # Moving right
             self.rect.centerx = -self.width  # Spawn on left
