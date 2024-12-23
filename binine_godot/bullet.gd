@@ -14,7 +14,6 @@ func _physics_process(delta: float) -> void:
 	var move = move_and_collide(velocity.normalized() * delta * speed)
 	if is_offscreen():
 		queue_free()
-		print(key)
 
 
 func is_offscreen() -> bool:
