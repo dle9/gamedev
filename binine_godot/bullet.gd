@@ -6,12 +6,10 @@ var key = null
 
 
 func _ready() -> void:
-	collision_layer = 2
-	collision_mask = 1
-
+	pass
 
 func _physics_process(delta: float) -> void:
-	var move = move_and_collide(velocity.normalized() * delta * speed)
+	move_and_collide(velocity.normalized() * delta * speed)
 	if is_offscreen():
 		queue_free()
 
@@ -21,3 +19,9 @@ func is_offscreen() -> bool:
 	if position.x < 0 or position.x > screen_size.x or position.y < 0 or position.y > screen_size.y:
 		return true
 	return false
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if "enemy" in body.name:
+		body.hit_key = key
+		queue_free()

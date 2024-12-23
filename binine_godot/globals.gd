@@ -41,6 +41,9 @@ var alphabet = [
 
 
 func generate_rows(difficulty) -> Array:
+	'''assign a unique key to each 
+	of the nine 9 player rows'''
+	
 	var arr = null
 	
 	if difficulty == "essential":
@@ -54,3 +57,22 @@ func generate_rows(difficulty) -> Array:
 		
 	arr.shuffle()
 	return arr.slice(0, 9)
+	
+	
+func generate_word_bar() -> String:
+	'''generate the enemy hp bar'''
+	
+	var possible_lengths = [3, 6, 9]
+	var length = possible_lengths[randi() % possible_lengths.size()]
+	
+	var result = ""
+	
+	for i in range(length):
+		var letter = alphabet[randi() % alphabet.size()]
+		result += letter.to_lower()
+	
+	return result
+
+
+func kill() -> void:
+	get_tree().reload_current_scene()
