@@ -5,6 +5,7 @@ var motion = Vector2()
 var base_speed = 100.0
 var hit_key = null
 var word_bar = null
+@onready var label = $TextBox/MarginContainer/HBoxContainer/Label
 
 
 func _ready() -> void:
@@ -13,6 +14,8 @@ func _ready() -> void:
 	
 	
 func _physics_process(delta: float) -> void:
+	label.text = word_bar
+	
 	var Player = get_parent().get_node("player")
 	
 	var direction = 1
