@@ -32,9 +32,15 @@ func _physics_process(delta: float) -> void:
 	
 	
 func handle_hit(hit_key) -> void:
-	if word_bar.length() > 1:
-		if hit_key.to_lower() == word_bar[0]:
+	if word_bar.length() == 1:
+		if hit_key.to_lower() == word_bar:
+			queue_free()
+		else:
+			if word_bar.length() < 9:
+				word_bar += Globals.generate_random_letter()
+	elif hit_key.to_lower() == word_bar[0]:
 			word_bar = word_bar.substr(1, -1)
 			print(word_bar)
 	else:
-		queue_free()
+		if word_bar.length() < 9:
+			word_bar += Globals.generate_random_letter()

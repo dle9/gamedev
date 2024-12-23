@@ -68,11 +68,14 @@ func generate_word_bar() -> String:
 	var result = ""
 	
 	for i in range(length):
-		var letter = alphabet[randi() % alphabet.size()]
-		result += letter.to_lower()
+		result += generate_random_letter()
 	
 	return result
-
-
+	
+	
+func generate_random_letter() -> String:
+	return alphabet[randi() % alphabet.size()].to_lower()
+	
+	
 func kill() -> void:
 	get_tree().reload_current_scene()
