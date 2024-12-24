@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://boitjlgg6xibu"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_4h4lv"]
-[ext_resource type="Texture2D" uid="uid://c2ciy42o82ssw" path="res://binenemy.png" id="2_pw83h"]
+[ext_resource type="Texture2D" uid="uid://c2ciy42o82ssw" path="res://assets/binenemy.png" id="2_pw83h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p88s"]
 size = Vector2(49, 96)
@@ -13,7 +13,7 @@ size = Vector2(68, 96)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dcsb"]
-bg_color = Color(0.160784, 0.160784, 0.160784, 0.490196)
+bg_color = Color(0.160784, 0.160784, 0.160784, 0)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
@@ -21,6 +21,8 @@ corner_radius_bottom_left = 6
 
 [node name="enemy" type="CharacterBody2D"]
 light_mask = 3
+collision_layer = 4
+collision_mask = 11
 script = ExtResource("1_4h4lv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -32,21 +34,27 @@ position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_7p88s")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_pal6d")
 
 [node name="TextBox" type="MarginContainer" parent="."]
+visibility_layer = 2
+z_index = 8
 offset_left = -51.0
 offset_top = -80.0
 offset_right = 52.0
 offset_bottom = -48.0
 
 [node name="Panel" type="Panel" parent="TextBox"]
+visibility_layer = 2
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_be6uy")
 
 [node name="MarginContainer" type="MarginContainer" parent="TextBox"]
+visibility_layer = 2
 layout_mode = 2
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_top = 1
@@ -54,6 +62,7 @@ theme_override_constants/margin_right = 1
 theme_override_constants/margin_bottom = 1
 
 [node name="Panel" type="Panel" parent="TextBox/MarginContainer"]
+visibility_layer = 2
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8dcsb")
 
@@ -62,7 +71,10 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="TextBox/MarginContainer/HBoxContainer"]
+visibility_layer = 2
+z_index = 9
+z_as_relative = false
 layout_mode = 2
-theme_override_colors/font_color = Color(0.780609, 0.637685, 0.190293, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 18
 text = "ooooooooo"

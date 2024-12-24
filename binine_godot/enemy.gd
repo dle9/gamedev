@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 var motion = Vector2()
-var base_speed = 100.0
+var base_speed = 650.0
 var hit_key = null
 var word_bar = null
 @onready var label = $TextBox/MarginContainer/HBoxContainer/Label
@@ -40,7 +40,6 @@ func handle_hit(hit_key) -> void:
 				word_bar += Globals.generate_random_letter()
 	elif hit_key.to_lower() == word_bar[0]:
 			word_bar = word_bar.substr(1, -1)
-			print(word_bar)
 	else:
 		if word_bar.length() < 9:
 			word_bar += Globals.generate_random_letter()

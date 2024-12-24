@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c2ciy42o82ssw"
-path="res://.godot/imported/binenemy.png-5539a089abbf682911d44f5fc6901ba5.ctex"
+path="res://.godot/imported/binenemy.png-0335b3b4c464fc3c87a3c0e45725db79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://binenemy.png"
-dest_files=["res://.godot/imported/binenemy.png-5539a089abbf682911d44f5fc6901ba5.ctex"]
+source_file="res://assets/binenemy.png"
+dest_files=["res://.godot/imported/binenemy.png-0335b3b4c464fc3c87a3c0e45725db79.ctex"]
 
 [params]
 

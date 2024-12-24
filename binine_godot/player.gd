@@ -11,7 +11,6 @@ var rows = null
 func _ready() -> void:
 	position = get_viewport().size / 2
 	rows = Globals.generate_rows(difficulty)
-	print(rows)
 	
 	
 func _physics_process(delta: float) -> void:
