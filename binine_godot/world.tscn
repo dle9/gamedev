@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://f872ckeo5h84"]
+[gd_scene load_steps=16 format=3 uid="uid://f872ckeo5h84"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_1rxbk"]
 [ext_resource type="Script" path="res://player.gd" id="1_erarh"]
@@ -221,6 +221,9 @@ corner_radius_bottom_left = 9
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crvae"]
 bg_color = Color(0.129412, 0.129412, 0.129412, 0.27451)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71j37"]
+size = Vector2(145, 851.5)
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_1rxbk")
@@ -451,5 +454,13 @@ autostart = true
 [node name="GameTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="DangerArea" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DangerArea"]
+position = Vector2(912.5, 429.25)
+shape = SubResource("RectangleShape2D_71j37")
+
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+[connection signal="body_entered" from="DangerArea" to="." method="_on_area_2d_body_entered"]

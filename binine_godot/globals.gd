@@ -19,6 +19,9 @@ extends Node
 
 var enemy_speeds = [50, 100, 150, 200, 250, 300]
 var enemy_pos_x = [0, 1824]
+var is_lvl_1 = false
+var is_lvl_2 = false
+var is_lvl_3 = false
 
 
 var essential = [
@@ -76,14 +79,42 @@ func generate_rows(difficulty) -> Array:
 		arr = essential
 		
 	arr.shuffle()
+	
 	return arr.slice(0, 9)
 
-var row_legend = generate_rows("essential")
+
+var row_legend = []
+
+
+func _ready():
+	row_legend = generate_rows("essential")
+	
 	
 func calc_row_pos_y(row: int) -> int:
 	var sprite_height = 96
 	var row_pos_y = (sprite_height * row) + sprite_height/2
 	return row_pos_y
+	
+
+func generate_word_bar() -> String:
+	'''generate the enemy hp bar'''
+	
+	var possible_lengths = null
+	if possible_lengths == null or Globals.is_lvl1:
+		possible_lengths = [3]
+	if Globals.is_lvl_2:
+		possible_lengths = [3, 6]
+	if Globals.is_lvl_3:
+		possible_lengths = [3, 6, 9]
+		
+	var length = possible_lengths[randi() % possible_lengths.size()]
+	
+	var result = ""
+	
+	for i in range(length):
+		result += generate_random_letter()
+	
+	return result
 	
 	
 func generate_random_letter() -> String:
@@ -91,4 +122,4 @@ func generate_random_letter() -> String:
 	
 	
 func kill() -> void:
-	get_tree().reload_current_scene()
+	get_tree().quit()

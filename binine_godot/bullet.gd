@@ -20,7 +20,10 @@ func is_offscreen() -> bool:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if "enemy" in body.name:
-		print("hit enemy")
+	if body.is_in_group("enemies"):
 		body.hit_key = key
 		queue_free()
+
+
+func _on_timer_timeout() -> void:
+	queue_free()
