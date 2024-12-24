@@ -5,11 +5,8 @@ var speed = 333.0
 var key = null
 
 
-func _ready() -> void:
-	pass
-	
-	
 func _physics_process(delta: float) -> void:
+	position += velocity * delta
 	move_and_collide(velocity.normalized() * delta * speed)
 	if is_offscreen():
 		queue_free()
@@ -24,5 +21,6 @@ func is_offscreen() -> bool:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if "enemy" in body.name:
+		print("hit enemy")
 		body.hit_key = key
 		queue_free()
