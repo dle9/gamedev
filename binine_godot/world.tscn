@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://f872ckeo5h84"]
+[gd_scene load_steps=13 format=3 uid="uid://f872ckeo5h84"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_erarh"]
 [ext_resource type="Texture2D" uid="uid://bawwn11fg5u86" path="res://assets/binplayer.png" id="2_23gb1"]
@@ -211,6 +211,13 @@ sources/2 = SubResource("TileSetAtlasSource_ec8fp")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02m74"]
 size = Vector2(60, 96)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hotqq"]
+bg_color = Color(0.054902, 0.054902, 0.054902, 0.294118)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
 [node name="world" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -223,6 +230,7 @@ layer_1/z_index = 2
 layer_1/tile_data = PackedInt32Array(26, 262146, 1, 65562, 262146, 2, 131098, 262146, 3, 196634, 262146, 1, 262170, 262146, 2, 327706, 262146, 3, 393242, 262146, 1, 458778, 262146, 2, 524314, 262146, 3, 589850, 262146, 1, 655386, 262146, 2, 720922, 262146, 3, 786458, 262146, 1, 851994, 262146, 2, 917530, 262146, 3, 983066, 262146, 1, 1048602, 262146, 2, 1114138, 262146, 3, 1179674, 262146, 1, 1245210, 262146, 2, 1310746, 262146, 3, 1376282, 262146, 1, 1441818, 262146, 2, 1507354, 262146, 3, 1572890, 262146, 1, 1638426, 262146, 2, 1703962, 262146, 3, 30, 524290, 1, 65566, 524290, 2, 131102, 524290, 3, 196638, 524290, 1, 262174, 524290, 2, 327710, 524290, 3, 393246, 524290, 1, 458782, 524290, 2, 524318, 524290, 3, 589854, 524290, 1, 655390, 524290, 2, 720926, 524290, 3, 786462, 524290, 1, 851998, 524290, 2, 917534, 524290, 3, 983070, 524290, 1, 1048606, 524290, 2, 1114142, 524290, 3, 1179678, 524290, 1, 1245214, 524290, 2, 1310750, 524290, 3, 1376286, 524290, 1, 1441822, 524290, 2, 1507358, 524290, 3, 1572894, 524290, 1, 1638430, 524290, 2, 1703966, 524290, 3, 27, 786434, 1, 28, 851970, 1, 29, 917506, 1)
 
 [node name="player" type="CharacterBody2D" parent="."]
+z_index = 60
 collision_mask = 12
 script = ExtResource("1_erarh")
 
@@ -237,3 +245,175 @@ shape = SubResource("RectangleShape2D_02m74")
 position = Vector2(33, -13)
 
 [node name="enemy" parent="." instance=ExtResource("3_hx6hm")]
+
+[node name="Row0" type="MarginContainer" parent="."]
+offset_left = 864.0
+offset_top = 1.0
+offset_right = 960.0
+offset_bottom = 97.0
+
+[node name="Panel" type="Panel" parent="Row0"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hotqq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Row0"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Row0/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0
+"
+
+[node name="Row1" type="MarginContainer" parent="."]
+offset_left = 864.0
+offset_top = 97.0
+offset_right = 960.0
+offset_bottom = 193.0
+
+[node name="Panel" type="Panel" parent="Row1"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hotqq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Row1"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Row1/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "1"
+
+[node name="Row2" type="MarginContainer" parent="."]
+offset_left = 864.0
+offset_top = 193.0
+offset_right = 960.0
+offset_bottom = 289.0
+
+[node name="Panel" type="Panel" parent="Row2"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hotqq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Row2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Row2/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "2"
+
+[node name="Row3" type="MarginContainer" parent="."]
+offset_left = 864.0
+offset_top = 289.0
+offset_right = 960.0
+offset_bottom = 385.0
+
+[node name="Panel" type="Panel" parent="Row3"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hotqq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Row3"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Row3/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "3"
+
+[node name="Row4" type="MarginContainer" parent="."]
+offset_left = 864.0
+offset_top = 385.0
+offset_right = 960.0
+offset_bottom = 481.0
+
+[node name="Panel" type="Panel" parent="Row4"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hotqq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Row4"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Row4/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "4"
+
+[node name="Row5" type="MarginContainer" parent="."]
+offset_left = 864.0
+offset_top = 481.0
+offset_right = 960.0
+offset_bottom = 577.0
+
+[node name="Panel" type="Panel" parent="Row5"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hotqq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Row5"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Row5/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "5"
+
+[node name="Row6" type="MarginContainer" parent="."]
+offset_left = 864.0
+offset_top = 577.0
+offset_right = 960.0
+offset_bottom = 673.0
+
+[node name="Panel" type="Panel" parent="Row6"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hotqq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Row6"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Row6/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "6"
+
+[node name="Row7" type="MarginContainer" parent="."]
+offset_left = 864.0
+offset_top = 673.0
+offset_right = 960.0
+offset_bottom = 769.0
+
+[node name="Panel" type="Panel" parent="Row7"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hotqq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Row7"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Row7/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "7"
+
+[node name="Row8" type="MarginContainer" parent="."]
+offset_left = 864.0
+offset_top = 769.0
+offset_right = 960.0
+offset_bottom = 865.0
+
+[node name="Panel" type="Panel" parent="Row8"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hotqq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Row8"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Row8/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "8"

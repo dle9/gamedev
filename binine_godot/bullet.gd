@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var speed = 633.0
+var speed = 333.0
 var key = null
 
 

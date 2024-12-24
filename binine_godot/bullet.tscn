@@ -10,6 +10,9 @@ size = Vector2(20, 10)
 size = Vector2(22, 10)
 
 [node name="bullet" type="CharacterBody2D"]
+visibility_layer = 32
+z_index = 30
+z_as_relative = false
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_y48mu")
@@ -18,6 +21,7 @@ script = ExtResource("1_y48mu")
 shape = SubResource("RectangleShape2D_2e60s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visibility_layer = 32
 texture = ExtResource("1_ev2vr")
 
 [node name="Area2D" type="Area2D" parent="."]

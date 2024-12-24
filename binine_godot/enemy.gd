@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 var motion = Vector2()
-var base_speed = 650.0
+var base_speed = 50.0
 var hit_key = null
 var word_bar = null
 @onready var label = $TextBox/MarginContainer/HBoxContainer/Label
