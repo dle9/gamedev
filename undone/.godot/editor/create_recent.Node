@@ -1,0 +1,14 @@
+Label
+CenterContainer
+MarginContainer
+Panel
+ColorRect
+Button
+ColorPickerButton
+Sprite2D
+VBoxContainer
+TextEdit
+HBoxContainer
+ColorPicker
+LineEdit
+CollisionShape2D

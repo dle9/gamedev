@@ -1,0 +1,31 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1735090190
+controls.gd::GDScript::-1::1735077054::0::1::::<>Node<>::
+globals.gd::GDScript::-1::1735077029::0::1::::<>Node<>::
+home.tscn::PackedScene::5014791045260849288::1735089587::0::1::::<><>::res://intro.gd<>uid://belkc0tbvy0cr::::res://assets/bg.png<>uid://c50srkm0o7qhr::::res://assets/icons/eyedropper.png<>res://username_edit.gd
+icon.svg::CompressedTexture2D::2095979756347692624::1735071180::1735071184::1::::<><>::
+intro.gd::GDScript::-1::1735089503::0::1::::<>Node2D<>::
+username_edit.gd::GDScript::-1::1735087407::0::1::::<>LineEdit<>::
+::res://assets/::1735072853
+bg.png::CompressedTexture2D::2690496297564870825::1735071862::1735071869::1::::<><>::
+::res://assets/fonts/::1735072432
+FiraCodeNerdFont-Regular.ttf::FontFile::2235278706697056187::1731888242::1735072432::1::::<><>::
+::res://assets/icons/::1735074679
+caret-double-right.png::CompressedTexture2D::2549627759422244601::1735073285::1735073364::1::::<><>::
+caret-right.png::CompressedTexture2D::4907524322233551412::1735073354::1735073364::1::::<><>::
+eyedropper.png::CompressedTexture2D::6931239929671872831::1735074673::1735074679::1::::<><>::
+::res://assets/sprites/::1735071393
+binenemy.png::CompressedTexture2D::652438574891395792::1735071370::1735071393::1::::<><>::
+binplayer.png::CompressedTexture2D::3295447242387579922::1735071370::1735071393::1::::<><>::
+::res://assets/tilemaps/::1735071393
+TX Plant.png::CompressedTexture2D::5088084070711906189::1735071370::1735071393::1::::<><>::
+TX Player.png::CompressedTexture2D::5813743538980497399::1735071370::1735071393::1::::<><>::
+TX Props.png::CompressedTexture2D::1573586698778241180::1735071370::1735071393::1::::<><>::
+TX Shadow Plant.png::CompressedTexture2D::5530689427301769337::1735071370::1735071393::1::::<><>::
+TX Shadow.png::CompressedTexture2D::8463744953966906793::1735071370::1735071393::1::::<><>::
+TX Struct.png::CompressedTexture2D::8508709455151428132::1735071370::1735071393::1::::<><>::
+TX Tileset Grass.png::CompressedTexture2D::6893130751092713061::1735071370::1735071393::1::::<><>::
+TX Tileset Stone Ground.png::CompressedTexture2D::8278437383529596999::1735071370::1735071393::1::::<><>::
+TX Tileset Wall.png::CompressedTexture2D::5959650199169731317::1735071370::1735071393::1::::<><>::
+::res://assets/weapons/::1735071393
+bullet.png::CompressedTexture2D::3585760327493679820::1735071370::1735071393::1::::<><>::
