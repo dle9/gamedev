@@ -1,9 +1,9 @@
-ColorPickerButton
 Label
+ColorRect
+ColorPickerButton
 CenterContainer
 MarginContainer
 Panel
-ColorRect
 Button
 Sprite2D
 VBoxContainer

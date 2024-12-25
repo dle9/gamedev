@@ -1,10 +1,13 @@
 extends Node2D
 
 
-@onready var title_container = $CustomizeContainer/MarginContainer/VBoxContainer/TitleContainer
 @onready var intro_panel = $CustomizeContainer/MarginContainer/IntroPanel
+@onready var title_container = $CustomizeContainer/MarginContainer/VBoxContainer/TitleContainer
+@onready var color_picker_container = $CustomizeContainer/MarginContainer/VBoxContainer/ColorPickerContainer/MarginContainer
 
+@onready var username_panel = $CustomizeContainer/MarginContainer/VBoxContainer/UsernameContainer/UsernamePanel
 @onready var username_edit = $CustomizeContainer/MarginContainer/VBoxContainer/UsernameContainer/UsernameEdit
+@onready var username_label = $CustomizeContainer/MarginContainer/VBoxContainer/UsernameContainer/UsernameLabel
 @onready var title = $CustomizeContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/CenterContainer/TitleLabel
 @onready var color_picker = $CustomizeContainer/MarginContainer/VBoxContainer/ColorPickerContainer/MarginContainer/Sprite2D/ColorPickerButton
 @onready var warning_label_1 = $CustomizeContainer/MarginContainer/VBoxContainer/WarningContainer1/CenterContainer/WarningLabel1
@@ -60,12 +63,20 @@ func confirmed():
 	# update the viewport
 	var tween = create_tween()
 	var window = get_window()
+	$bg.size = Vector2(1680, 1050)
 	tween.tween_property(window, "size", Vector2i(1680, 1050), 0.9)
 	
 	# set the user customization
 	Globals.theme_color = selected_color
 	Globals.username = username_edit.text
+	username_label.text = username_edit.text
 	
 	# hide relevant nodes
 	Utils.fade(intro_panel, "theme_override_colors/bg_color", Color(1, 1, 1, 0), 0.3)
+	Utils.fade(username_panel, "modulate:a", 0, 0.3)
+	Utils.fade(username_edit, "modulate:a", 0, 0.3)
+	Utils.fade(color_picker_container, "modulate:a", 0, 0.3)
+	Utils.fade(warning_label_1, "theme_override_colors/font_color", Color(1, 1, 1, 0), 0.3)
+	Utils.fade(warning_label_2, "theme_override_colors/font_color", Color(1, 1, 1, 0), 0.3)
+	
 	
