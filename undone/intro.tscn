@@ -1,8 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdpg41qhu2cai"]
+[gd_scene load_steps=9 format=3 uid="uid://cdpg41qhu2cai"]
 
-[ext_resource type="Script" path="res://home.gd" id="1_ku3an"]
+[ext_resource type="Script" path="res://intro.gd" id="1_ku3an"]
 [ext_resource type="Texture2D" uid="uid://c50srkm0o7qhr" path="res://assets/icons/eyedropper.png" id="3_01lco"]
 [ext_resource type="Script" path="res://username_edit.gd" id="3_vt1vp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bddjv"]
+bg_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfw42"]
+bg_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+border_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2wll"]
 bg_color = Color(0.105882, 0.105882, 0.105882, 0)
@@ -31,17 +43,24 @@ corner_radius_bottom_left = 3
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iraag"]
 bg_color = Color(0.133196, 0.133196, 0.133196, 1)
 
-[node name="home" type="Node2D"]
+[node name="intro" type="Node2D"]
 script = ExtResource("1_ku3an")
 
-[node name="bg" type="ColorRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+[node name="IntermediaryContainer" type="MarginContainer" parent="."]
+offset_right = 1500.0
+offset_bottom = 900.0
+
+[node name="bg" type="Panel" parent="IntermediaryContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bddjv")
 
 [node name="CustomizeContainer" type="MarginContainer" parent="."]
 offset_right = 1152.0
 offset_bottom = 648.0
+
+[node name="bg" type="Panel" parent="CustomizeContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfw42")
 
 [node name="MarginContainer" type="MarginContainer" parent="CustomizeContainer"]
 layout_mode = 2
@@ -78,7 +97,11 @@ max_length = 9
 caret_blink = true
 script = ExtResource("3_vt1vp")
 
-[node name="UsernameLabel" type="Label" parent="CustomizeContainer/MarginContainer/VBoxContainer/UsernameContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CustomizeContainer/MarginContainer/VBoxContainer/UsernameContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="UsernameLabel" type="Label" parent="CustomizeContainer/MarginContainer/VBoxContainer/UsernameContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 horizontal_alignment = 1

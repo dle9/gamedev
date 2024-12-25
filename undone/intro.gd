@@ -1,18 +1,23 @@
 extends Node2D
 
 
-@onready var intro_panel = $CustomizeContainer/MarginContainer/IntroPanel
 @onready var title_container = $CustomizeContainer/MarginContainer/VBoxContainer/TitleContainer
+@onready var username_container = $CustomizeContainer/MarginContainer/VBoxContainer/UsernameContainer/HBoxContainer
+@onready var username_margin_container = $CustomizeContainer/MarginContainer/VBoxContainer/UsernameContainer
 @onready var color_picker_container = $CustomizeContainer/MarginContainer/VBoxContainer/ColorPickerContainer/MarginContainer
 
+@onready var intro_panel = $CustomizeContainer/MarginContainer/IntroPanel
 @onready var username_panel = $CustomizeContainer/MarginContainer/VBoxContainer/UsernameContainer/UsernamePanel
+@onready var title_panel = $CustomizeContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/Panel
+
 @onready var username_edit = $CustomizeContainer/MarginContainer/VBoxContainer/UsernameContainer/UsernameEdit
-@onready var username_label = $CustomizeContainer/MarginContainer/VBoxContainer/UsernameContainer/UsernameLabel
-@onready var title = $CustomizeContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/CenterContainer/TitleLabel
+@onready var username_label	 = $CustomizeContainer/MarginContainer/VBoxContainer/UsernameContainer/HBoxContainer/UsernameLabel
+@onready var title_label = $CustomizeContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/CenterContainer/TitleLabel
 @onready var color_picker = $CustomizeContainer/MarginContainer/VBoxContainer/ColorPickerContainer/MarginContainer/Sprite2D/ColorPickerButton
 @onready var warning_label_1 = $CustomizeContainer/MarginContainer/VBoxContainer/WarningContainer1/CenterContainer/WarningLabel1
 @onready var warning_label_2 = $CustomizeContainer/MarginContainer/VBoxContainer/WarningContainer2/CenterContainer/WarningLabel2
 @onready var selected_color = Globals.colors["white"]
+
 var confirm_choices = false # first enter pressed
 var warning_showing = false
 
@@ -46,7 +51,7 @@ func _process(delta: float) -> void:
 	
 func set_theme() -> void:
 	intro_panel.get_theme_stylebox("panel").border_color = color_picker.color
-	title.add_theme_color_override("font_color", color_picker.color)
+	title_label.add_theme_color_override("font_color", color_picker.color)
 	selected_color = color_picker.color
 	
 	
@@ -54,29 +59,45 @@ func toggle_warnings():
 	var dest = Color(1, 1, 1, 1)
 	if !warning_showing:
 		dest = Color(1, 1, 1, 0)
-	Utils.fade(warning_label_1, "theme_override_colors/font_color", dest, 0.3)
-	Utils.fade(warning_label_2, "theme_override_colors/font_color", dest, 0.3)
+	Utils.tween_fade(warning_label_1, "theme_override_colors/font_color", dest, 0.3)
+	Utils.tween_fade(warning_label_2, "theme_override_colors/font_color", dest, 0.3)
 	
 		
 func confirmed():
 	'''user presses accept twice'''
-	# update the viewport
-	var tween = create_tween()
-	var window = get_window()
-	$bg.size = Vector2(1680, 1050)
-	tween.tween_property(window, "size", Vector2i(1680, 1050), 0.9)
-	
 	# set the user customization
 	Globals.theme_color = selected_color
 	Globals.username = username_edit.text
 	username_label.text = username_edit.text
 	
-	# hide relevant nodes
-	Utils.fade(intro_panel, "theme_override_colors/bg_color", Color(1, 1, 1, 0), 0.3)
-	Utils.fade(username_panel, "modulate:a", 0, 0.3)
-	Utils.fade(username_edit, "modulate:a", 0, 0.3)
-	Utils.fade(color_picker_container, "modulate:a", 0, 0.3)
-	Utils.fade(warning_label_1, "theme_override_colors/font_color", Color(1, 1, 1, 0), 0.3)
-	Utils.fade(warning_label_2, "theme_override_colors/font_color", Color(1, 1, 1, 0), 0.3)
+	# dramatic intro to scene 2
+	hide_intro_elements()
+	var tween_title = create_tween()
+	tween_title.tween_property(title_label, "modulate:a", 0, 0.9)
+	await tween_title.finished
+	
+	# update the window size
+	var tween_window = create_tween()
+	tween_window.tween_property(get_window(), "size", Vector2i(1500, 900), 0.9)
+	await tween_window.finished
+	
+	# hide old container
+	$CustomizeContainer.modulate.a = 0
+	
+	# do some intermedeiary text
+	
+	# switch to terminal scene
+	#get_tree().change_scene_to_file("res://main.tscn")
 	
 	
+func hide_intro_elements():
+	var tween = create_tween()
+	tween.tween_property(intro_panel, "modulate:a", 0, 0.3)
+	tween.parallel().tween_property(username_edit, "modulate:a", 0, 0.3)
+	tween.parallel().tween_property(username_label, "modulate:a", 0, 0.3)
+	tween.parallel().tween_property(username_panel, "modulate:a", 0, 0.3)
+	tween.parallel().tween_property(title_panel, "modulate:a", 0, 0.3)
+	tween.parallel().tween_property(color_picker_container, "modulate:a", 0, 0.3)
+	tween.parallel().tween_property(warning_label_1, "theme_override_colors/font_color", Color(1, 1, 1, 0), 0.3)
+	tween.parallel().tween_property(warning_label_2, "theme_override_colors/font_color", Color(1, 1, 1, 0), 0.3)
+	await tween.finished

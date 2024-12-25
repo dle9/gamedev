@@ -1,3 +1,10 @@
+res://stage2_temp.tscn
 res://home.tscn
 res://home.gd
-res://stage2_temp.tscn
+res://temp.tscn
+res://utils.gd
+res://intro.tscn
+res://intro.gd
+res://globals.gd
+res://main.tscn
+res://main.gd
