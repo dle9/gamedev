@@ -1,16 +1,17 @@
 extends Node2D
 
 
-@onready var intro_panel = $MarginContainer/MarginContainer/IntroPanel
-@onready var username_edit = $MarginContainer/MarginContainer/VBoxContainer/UsernameContainer/UsernameEdit
-@onready var title_container = $MarginContainer/MarginContainer/VBoxContainer/TitleContainer
-@onready var title = $MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/CenterContainer/TitleLabel
-@onready var color_picker = $MarginContainer/MarginContainer/VBoxContainer/ColorPickerContainer/MarginContainer/Sprite2D/ColorPickerButton
+@onready var title_container = $CustomizeContainer/MarginContainer/VBoxContainer/TitleContainer
+@onready var intro_panel = $CustomizeContainer/MarginContainer/IntroPanel
+
+@onready var username_edit = $CustomizeContainer/MarginContainer/VBoxContainer/UsernameContainer/UsernameEdit
+@onready var title = $CustomizeContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/CenterContainer/TitleLabel
+@onready var color_picker = $CustomizeContainer/MarginContainer/VBoxContainer/ColorPickerContainer/MarginContainer/Sprite2D/ColorPickerButton
+@onready var warning_label_1 = $CustomizeContainer/MarginContainer/VBoxContainer/WarningContainer1/CenterContainer/WarningLabel1
+@onready var warning_label_2 = $CustomizeContainer/MarginContainer/VBoxContainer/WarningContainer2/CenterContainer/WarningLabel2
 @onready var selected_color = Globals.colors["white"]
-@onready var warning_label_1 = $MarginContainer/MarginContainer/VBoxContainer/WarningContainer1/CenterContainer/WarningLabel1
-@onready var warning_label_2 = $MarginContainer/MarginContainer/VBoxContainer/WarningContainer2/CenterContainer/WarningLabel2
-var confirm_choices = false		# first enter pressed
-var warnings_on = false
+var confirm_choices = false # first enter pressed
+var warning_showing = false
 
 
 func _ready() -> void:
@@ -20,22 +21,22 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# controls
 	if Input.is_action_just_pressed("ui_accept"):
-		username_edit.release_focus()
-		if !warnings_on and !confirm_choices:
+		if !warning_showing and !confirm_choices and username_edit.has_focus() and username_edit.text.length() > 0:
 			confirm_choices = true
-			warnings_on = true
+			warning_showing = true
 			toggle_warnings()
 		elif confirm_choices:
 			confirmed() # go to next scene!
+		username_edit.release_focus()
 	elif Input.is_action_just_pressed("tab"):
 		username_edit.grab_focus()
 	elif Input.is_action_just_pressed("esc"):
-		if warnings_on and confirm_choices:
-			warnings_on = false
+		if warning_showing and confirm_choices:
+			warning_showing = false
 			confirm_choices = false
 			toggle_warnings()
 			
-	# theme color stuff
+	# theme customization
 	if color_picker.color and (color_picker.color != selected_color):
 		set_theme()
 	
@@ -44,25 +45,27 @@ func set_theme() -> void:
 	intro_panel.get_theme_stylebox("panel").border_color = color_picker.color
 	title.add_theme_color_override("font_color", color_picker.color)
 	selected_color = color_picker.color
-
-
-func toggle_warnings():
-	var tween = create_tween()
-
-	var dest = Vector2(0, 0)
-	if warnings_on:
-		dest = title_container.position + Vector2(0, 20)
-	else:
-		dest = title_container.position - Vector2(0, 20)
-
-	tween.tween_property(title_container, "position", dest, 3)
-	tween.set_trans(Tween.TRANS_QUAD)
-	tween.set_ease(Tween.EASE_IN_OUT)
-
-	warning_label_1.visible = !warning_label_1.visible
-	warning_label_2.visible = !warning_label_2.visible
-
 	
+	
+func toggle_warnings():
+	var dest = Color(1, 1, 1, 1)
+	if !warning_showing:
+		dest = Color(1, 1, 1, 0)
+	Utils.fade(warning_label_1, "theme_override_colors/font_color", dest, 0.3)
+	Utils.fade(warning_label_2, "theme_override_colors/font_color", dest, 0.3)
+	
+		
 func confirmed():
 	'''user presses accept twice'''
-	pass
+	# update the viewport
+	var tween = create_tween()
+	var window = get_window()
+	tween.tween_property(window, "size", Vector2i(1680, 1050), 0.9)
+	
+	# set the user customization
+	Globals.theme_color = selected_color
+	Globals.username = username_edit.text
+	
+	# hide relevant nodes
+	Utils.fade(intro_panel, "theme_override_colors/bg_color", Color(1, 1, 1, 0), 0.3)
+	

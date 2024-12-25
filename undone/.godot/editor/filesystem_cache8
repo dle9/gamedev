@@ -1,10 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1735090190
+::res://::1735144526
 controls.gd::GDScript::-1::1735077054::0::1::::<>Node<>::
-globals.gd::GDScript::-1::1735077029::0::1::::<>Node<>::
-home.tscn::PackedScene::5014791045260849288::1735089587::0::1::::<><>::res://intro.gd<>uid://belkc0tbvy0cr::::res://assets/bg.png<>uid://c50srkm0o7qhr::::res://assets/icons/eyedropper.png<>res://username_edit.gd
+globals.gd::GDScript::-1::1735144165::0::1::::<>Node<>::
+home.tscn::PackedScene::5014791045260849288::1735144654::0::1::::<><>::res://intro.gd<>uid://belkc0tbvy0cr::::res://assets/bg.png<>uid://c50srkm0o7qhr::::res://assets/icons/eyedropper.png<>res://username_edit.gd
 icon.svg::CompressedTexture2D::2095979756347692624::1735071180::1735071184::1::::<><>::
-intro.gd::GDScript::-1::1735089503::0::1::::<>Node2D<>::
+intro.gd::GDScript::-1::1735144642::0::1::::<>Node2D<>::
+util.gd::GDScript::-1::1735144654::0::1::::<>Node<>::
 username_edit.gd::GDScript::-1::1735087407::0::1::::<>LineEdit<>::
 ::res://assets/::1735072853
 bg.png::CompressedTexture2D::2690496297564870825::1735071862::1735071869::1::::<><>::

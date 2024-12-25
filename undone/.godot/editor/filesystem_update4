@@ -1,2 +1,5 @@
 res://home.tscn
 res://intro.gd
+res://globals.gd
+res://util.gd
+res://utils.gd

@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://username_edit.gd" id="3_vt1vp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2wll"]
-bg_color = Color(0.105614, 0.105614, 0.105614, 1)
+bg_color = Color(0.105882, 0.105882, 0.105882, 0)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -42,36 +42,36 @@ position = Vector2(175, 67)
 scale = Vector2(7.36167, 4.50125)
 texture = ExtResource("1_shhpi")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="CustomizeContainer" type="MarginContainer" parent="."]
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CustomizeContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 300
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 300
 theme_override_constants/margin_bottom = 100
 
-[node name="IntroPanel" type="Panel" parent="MarginContainer/MarginContainer"]
+[node name="IntroPanel" type="Panel" parent="CustomizeContainer/MarginContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d2wll")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CustomizeContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="UsernameContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+[node name="UsernameContainer" type="MarginContainer" parent="CustomizeContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 66
 theme_override_constants/margin_top = 150
 theme_override_constants/margin_right = 66
 
-[node name="UsernamePanel" type="Panel" parent="MarginContainer/MarginContainer/VBoxContainer/UsernameContainer"]
+[node name="UsernamePanel" type="Panel" parent="CustomizeContainer/MarginContainer/VBoxContainer/UsernameContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jqcba")
 
-[node name="UsernameEdit" type="LineEdit" parent="MarginContainer/MarginContainer/VBoxContainer/UsernameContainer"]
+[node name="UsernameEdit" type="LineEdit" parent="CustomizeContainer/MarginContainer/VBoxContainer/UsernameContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 22
@@ -81,62 +81,62 @@ max_length = 9
 caret_blink = true
 script = ExtResource("3_vt1vp")
 
-[node name="ColorPickerContainer" type="CenterContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+[node name="ColorPickerContainer" type="CenterContainer" parent="CustomizeContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer/ColorPickerContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CustomizeContainer/MarginContainer/VBoxContainer/ColorPickerContainer"]
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/MarginContainer/VBoxContainer/ColorPickerContainer/MarginContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="CustomizeContainer/MarginContainer/VBoxContainer/ColorPickerContainer/MarginContainer"]
 texture = ExtResource("3_01lco")
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/MarginContainer/VBoxContainer/ColorPickerContainer/MarginContainer/Sprite2D"]
-z_index = -1
+[node name="ColorPickerButton" type="ColorPickerButton" parent="CustomizeContainer/MarginContainer/VBoxContainer/ColorPickerContainer/MarginContainer/Sprite2D"]
+z_index = -4096
 offset_left = -16.0
-offset_top = -15.0
-offset_right = 14.0
-offset_bottom = 15.0
-color = Color(0, 0, 0, 0)
+offset_top = -17.0
+offset_right = 19.0
+offset_bottom = 16.0
+button_mask = 7
 
-[node name="WarningContainer1" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+[node name="WarningContainer1" type="MarginContainer" parent="CustomizeContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 60
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MarginContainer/VBoxContainer/WarningContainer1"]
+[node name="CenterContainer" type="CenterContainer" parent="CustomizeContainer/MarginContainer/VBoxContainer/WarningContainer1"]
 layout_mode = 2
 
-[node name="WarningLabel1" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/WarningContainer1/CenterContainer"]
-visible = false
+[node name="WarningLabel1" type="Label" parent="CustomizeContainer/MarginContainer/VBoxContainer/WarningContainer1/CenterContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0)
 text = "Warning! This action cannot be"
 
-[node name="TitleContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+[node name="TitleContainer" type="MarginContainer" parent="CustomizeContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer/TitleContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CustomizeContainer/MarginContainer/VBoxContainer/TitleContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_right = 3
 
-[node name="Panel" type="Panel" parent="MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer"]
+[node name="Panel" type="Panel" parent="CustomizeContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_iraag")
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="CustomizeContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/CenterContainer"]
+[node name="TitleLabel" type="Label" parent="CustomizeContainer/MarginContainer/VBoxContainer/TitleContainer/MarginContainer/CenterContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "UNDONE"
 
-[node name="WarningContainer2" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+[node name="WarningContainer2" type="MarginContainer" parent="CustomizeContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MarginContainer/VBoxContainer/WarningContainer2"]
+[node name="CenterContainer" type="CenterContainer" parent="CustomizeContainer/MarginContainer/VBoxContainer/WarningContainer2"]
 layout_mode = 2
 
-[node name="WarningLabel2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/WarningContainer2/CenterContainer"]
-visible = false
+[node name="WarningLabel2" type="Label" parent="CustomizeContainer/MarginContainer/VBoxContainer/WarningContainer2/CenterContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0)
 text = "Continue?"
